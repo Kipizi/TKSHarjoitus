@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TKSHarjoitus.Models.Tuotteet>
+@{
+    ViewBag.Title = "Tuotteet2";
+}
+@section scripts {
+    <script type="text/javascript">
+
+        $("#poistaTuote").click(function () {
+            var productId = $(this).data("TuoteID");
+            alert(productId);
+        });
+
+        $(".showProductId").click(function () {
+            var productId = $(this).data("TuoteID");
+            alert(productId);
+        });
+
+
+        </script>
+}
+<div class="container-fluid">
+    <h2>Index</h2>
+    <h4>Tuotteita @Model.Count() kappaletta</h4>
+
+    <div class="row">
+        @foreach (TKSHarjoitus.Models.Tuotteet prod in Model)
+        {
+
+            <div class="col-lg-3">
+                <div class="card mb-3">
+                    <h3 class="card-header">@prod.Nimi</h3>
+                    <div class="card-body">
+                        <h5 class="card-title">@prod.TuoteID</h5>
+                        <h6 class="card-subtitle text-muted">@prod.Ahinta</h6>
+                    </div>
+                    @*<img style="height: 200px; width: 100%; display: block;" src="https://i.ibb.co/3TM3qd2/harjoituskuviahtml.png" alt="@prod.ImageLink">*@
+                    <img style="height: 200px; width: 100%; display: block;" src="@prod.Kuva" alt="@prod.Kuva">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@prod.Nimi</li>
+                        <li class="list-group-item">@prod.TuoteID</li>
+                        <li class="list-group-item">@prod.Ahinta</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script>
+    function naytaValittuTuote(tuoteID) {
+        alert(tuoteID);
+    }
+</script>
+
+
+
+
+
+
+
+
+

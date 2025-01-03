@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TKSHarjoitus.Models.Tuotteet>
+@{
+    ViewBag.Title = "Tuotteet";
+}
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $(".showTuoteId").click(function () {
+                var tuoteId = $(this).data("tuoteid");
+                alert(tuoteId);
+            });
+        });
+
+        $(function () {
+            $("#poistaTuote").click(function () {
+                var tuoteId = $(this).data("tuoteid");
+                alert(tuoteId);
+            });
+        });
+    </script>
+}
+<h2>Index</h2>
+<h4>Tuotteita @Model.Count() kappaletta </h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>TuoteID</th>
+            <th>Nimi</th>
+            <th>Ahinta</th>
+            <th>Kuva</th>    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TKSHarjoitus.Models.Tuotteet prod in Model)
+        {
+            <tr>
+                <td class="showTuoteId" data-TuoteID="@prod.TuoteID">@prod.TuoteID</td>
+                <td>@prod.Nimi</td>
+                <td>@prod.Ahinta</td>
+                <td>Ei saatavilla</td>
+                <td><button class="btn btn-success" onclick='naytaValittuTuote("@prod.Nimi")'>Muokkaa</button></td>
+                <td><button class="btn btn-primary showTuoteId"showTuoteId data-TuoteID="@prod.TuoteID">Muokkaa</button></td>
+                <td><button class="btn btn-danger showTuoteId" showTuoteId data-TuoteID="@prod.TuoteID">poista</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    function naytaValittuTuote(tuoteID) {
+        alert(tuoteID);
+    }
+</script>
+
+
+
