@@ -12,10 +12,12 @@ namespace WebAppFirst5MVC.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl; // Store the return URL
             return View();
         }
+
 
         [HttpPost]
         public ActionResult Authorize(Logins LoginModel)
@@ -37,8 +39,6 @@ namespace WebAppFirst5MVC.Controllers
 
                 return View("Index", LoginModel);
             }
-
-
         }
         public ActionResult LogOut()
         {

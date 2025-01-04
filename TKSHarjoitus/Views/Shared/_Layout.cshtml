@@ -26,20 +26,20 @@
         <ul class="dropdown-menu" aria-labelledby="loggedStatusDropdown">
             @if (ViewBag.LoggedStatus == "Logged in") // Assuming you have a condition to check if the user is logged in
             {
-                <li><a class="dropdown-item" href="/Home/Login">Log Out </a> </li>            
+                <li>
+                    @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
+                    {
+                        <button type="submit" class="dropdown-item">Log out</button>
+                    }
+                </li>
+
             }
             @if (ViewBag.LoggedStatus == "Logged out")
             {
-                <li><a class="dropdown-item" href="/Home/Login">Log In</a></li>
+                <li><a class="dropdown-item" href="~/Home/Login">Log in</a></li>
             }
-            @if (ViewBag.LoggedStatus == "Log in/out")
-            {
-                <li><a class="dropdown-item" href="/Home/Logout">Log Out</a></li>
-                <li><a class="dropdown-item" href="/Home/Login">Log In</a></li>
-            }
-
-
         </ul>
+
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

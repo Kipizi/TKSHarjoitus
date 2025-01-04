@@ -250,6 +250,7 @@
     <Content Include="Views\Postitoimipaikat\Postitoimipaikat.cshtml" />
     <Content Include="Views\Tuotteet\Tuotteet2.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Loggedout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

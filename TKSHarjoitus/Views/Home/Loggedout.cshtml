@@ -1,13 +1,25 @@
 ﻿@model TKSHarjoitus.Models.Logins
 @{ViewBag.LoggedStatus = "Logged out";
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Logged out";
+    ViewBag.LoggedOut = "Olet kirjautunut ulos järjestelmästä.";
 }
+
+<h2>Logged out</h2>
+
+@if (ViewBag.LoggedOut != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.LoggedOut
+    </div>
+}
+
+<p>Kiitos käynnistä, tervetuloa uudelleen!</p>
+
 <h2>Login</h2>
-<p>Kirjaudu sisään, nähdäksesi enemmän.</p>
 @using (Html.BeginForm("Authorize", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">     
+    <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.LoginId)
@@ -25,9 +37,9 @@
                 @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*<label class="field-validation-error">
+        <label class="field-validation-error">
             @Html.DisplayFor(model => model.LoginErrorMessage)
-        </label>*@
+        </label>
 
         <label class="text-danger">
             @Html.DisplayFor(model => model.LoginErrorMessage)
@@ -40,5 +52,4 @@
         </div>
     </div>
 }
-
 

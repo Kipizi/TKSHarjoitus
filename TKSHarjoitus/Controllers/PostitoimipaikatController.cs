@@ -13,13 +13,24 @@ namespace TKSHarjoitus.Controllers
     public class PostitoimipaikatController : Controller
     {
         private TilausDBEntities db = new TilausDBEntities();
-
-        // GET: Postitoimipaikats
+    
         public ActionResult Postitoimipaikat()
         {
-            ViewBag.LoggedStatus = "Log in/out";
+            // Check if the user is authenticated
+            if (Session["UserName"] != null) 
+            {
+                ViewBag.LoggedStatus = "Logged in";  // User is logged in
+            }
+            else
+            {
+                ViewBag.LoggedStatus = "Logged out";    // User is logged out
+            }
+
             return View(db.Postitoimipaikat.ToList());
         }
+
+
+
 
         // GET: Postitoimipaikats/Details/5
         public ActionResult Details(string id)
