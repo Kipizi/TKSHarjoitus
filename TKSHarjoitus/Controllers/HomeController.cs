@@ -91,7 +91,7 @@ namespace WebAppFirst5MVC.Controllers
         {
             Session.Abandon();
             ViewBag.LoggedStatus = "Out";
-            return RedirectToAction("Index", "Home"); //Uloskirjautumisen jälkeen pääsivulle
+            return RedirectToAction("Loggedout", "Home"); //Uloskirjautumisen jälkeen pääsivulle
         }
         public ActionResult Loggedout()
         {

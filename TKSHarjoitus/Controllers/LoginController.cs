@@ -43,7 +43,7 @@ namespace WebAppFirst5MVC.Controllers
         public ActionResult LogOut()
         {
             Session.Abandon();
-            return RedirectToAction("Logged out", "login");
+            return RedirectToAction("Loggedout", "login");
         }
 
         public ActionResult LoggedOut()
